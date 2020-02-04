@@ -1,20 +1,25 @@
-#IntroDIV
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+
+#introDiv
 {
-    width: 100%;
-    height: 500px;
-    background-color: beige;
+    height: 1000px;
+    background: black;
 }
 
-#headShotDiv
+#controlBox
 {
-    width: 450px;
-    position: fixed;
-    left: 50%;
-    top: 40px;
+    display: flex;           /* establish flex container */
+    flex-direction: column;  /* make main axis vertical */
+    justify-content: center; /* center items vertically, in this case */
+    align-items: center;     /* center items horizontally, in this case */
+    padding-top: 15rem;
 }
 
-#headShot
+.controlBoxText
 {
-    width: 100%;
-    height: auto;
+    color: wheat;
 }
+
