@@ -6,20 +6,31 @@ html, body {
 #introDiv
 {
     height: 1000px;
-    background: black;
+    background: #000000;
 }
 
 #controlBox
 {
-    display: flex;           /* establish flex container */
-    flex-direction: column;  /* make main axis vertical */
-    justify-content: center; /* center items vertically, in this case */
-    align-items: center;     /* center items horizontally, in this case */
-    padding-top: 15rem;
+    z-index: 1000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .controlBoxText
 {
-    color: wheat;
+    color: #FFF;
+}
+
+.scene 
+{
+    z-index: 1;
+    position: absolute;
+}
+
+.circleSVG
+{
+    fill: #000000;
 }
 
