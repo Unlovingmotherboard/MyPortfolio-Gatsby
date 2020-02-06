@@ -6,65 +6,98 @@ import { useStaticQuery, graphql } from "gatsby"
 import "./IntroStyle.css"
 
 
-const aboutMe = () => {
+const aboutMeTimeline = () => {
 
-/*
-555555 outerCircle outerCircleSVG
-363535 middleCircle middleCircleSVG
-272424 innerCircle innerCircleSVG
-*/
+    let t1 = anime.timeline({
+        easing: 'easeOutExpo',
+        duration: 2000,
+    });
+    let t2 = anime.timeline({
+        easing: 'easeOutExpo',
+        duration: 4100,
+    });
+    let t3 = anime.timeline({
+        easing: 'easeOutExpo',
+        duration: 6200,
+    });
 
+    let aboutMeText = anime.timeline({
+        easing: 'easeOutExpo',
+        duration: 1000,
+    })
+
+
+    aboutMeText.add({
+        targets: '.aboutMeTextDIV',
+        easing: 'easeOutExpo',
+        translateY: -200,
+    }).add({
+        targets: '.aboutMeTextDIV',
+        easing: 'easeOutExpo',
+        scale: 2
+    })
+
+
+    /* 
+        contactTextDIV
+        projectsTextDIV
+    */
+
+    // anime({
+    //     targets: '.aboutMeTextDIV',
+    //     duration: 3000,
+    //     easing: 'easeOutExpo',
+    //     translateY: -200,
+    // })
     anime({
+        targets: '.contactTextDIV',
+        duration: 100,
+        easing: 'easeOutExpo',
+        translateX: -2000,
+    })
+    anime({
+        targets: '.projectsTextDIV',
+        duration: 100,
+        easing: 'easeOutExpo',
+        translateX: 2000,
+    })
+
+    //THIS SCALES THE CIRCLES
+    t1.add({
         targets: '.outerCircle',
-        duration: 3000,
-        scale: 5,
-        fill: "#555555",
-        easing: 'easeInOutQuad',
-    });
-
-    anime({
-        targets: '.middleCircle',
-        duration: 3100,
         scale: 7,
-        fill: "#363535",
-        easing: 'easeInOutQuad',
-    });
-
-    anime({
-        targets: '.innerCircle',
-        duration: 3200,
-        scale: 12,
-        fill: "#272424",
-        easing: 'easeInOutQuad',
-    });
-
-
-
+    })
     anime({
         targets: '.outerCircleSVG',
-        duration: 500,
-        fill: "#555555",
+        duration: 1000,
+        fill: "#6e90fa",
         easing: 'easeInOutQuad',
     });
 
+    t2.add({
+        targets: '.middleCircle',
+        scale: 7,
+    })
     anime({
         targets: '.middleCircleSVG',
-        duration: 500,
-        fill: "#363535",
+        duration: 1000,
+        fill: "#4270ff",
         easing: 'easeInOutQuad',
     });
 
+
+    t3.add({
+        targets: '.innerCircle',
+        scale: 7,
+    })
     anime({
         targets: '.innerCircleSVG',
-        duration: 500,
-        fill: "#272424",
+        duration: 1000,
+        fill: "#1f55ff",
         easing: 'easeInOutQuad',
     });
 
-
-
-
-
+    //MAKES THE BUTTON TO REVERT TO INITIAL STATE APPEAR
     anime({
         targets: '#reverseStateButton',
         duration: 3000,
@@ -74,11 +107,86 @@ const aboutMe = () => {
             document.getElementById("reverseStateButton").style.display = "block"
         }
     });
+
+    /*
+555555 outerCircle outerCircleSVG
+363535 middleCircle middleCircleSVG
+272424 innerCircle innerCircleSVG
+*/
+
 }
 
 
-
 const revertToPreviousState = (p) => {
+
+    //THIS SCALES THE CIRCLES DOWN
+    anime({
+        targets: '.outerCircle',
+        duration: 3000,
+        scale: 1,
+        easing: 'easeInOutQuad',
+    });
+
+    anime({
+        targets: '.middleCircle',
+        duration: 3100,
+        scale: 1,
+        easing: 'easeInOutQuad',
+    });
+
+    anime({
+        targets: '.innerCircle',
+        duration: 3200,
+        scale: 1,
+        easing: 'easeInOutQuad',
+    });
+
+
+    anime({
+        targets: '.outerCircleSVG',
+        duration: 4000,
+        fill: "#000000",
+        easing: 'easeInOutQuad',
+    });
+
+    anime({
+        targets: '.middleCircleSVG',
+        duration: 4000,
+        fill: "#000000",
+        easing: 'easeInOutQuad',
+    });
+
+    anime({
+        targets: '.innerCircleSVG',
+        duration: 4000,
+        fill: "#000000",
+        easing: 'easeInOutQuad',
+
+    });
+
+
+    //REVERTS TEXT BACK
+
+    anime({
+        targets: '.aboutMeTextDIV',
+        duration: 3000,
+        easing: 'easeOutExpo',
+        translateY: 0,
+        scale: 1
+    })
+
+    anime({
+        targets: '.contactTextDIV',
+        duration: 100,
+        easing: 'easeOutExpo',
+        translateX: 0,
+    })
+    anime({
+        targets: '.projectsTextDIV',
+        duration: 100,
+        easing: 'easeOutExpo',
+        translateX: 0,
+    })
 
     anime({
         targets: '#reverseStateButton',
@@ -90,20 +198,7 @@ const revertToPreviousState = (p) => {
         }
     });
 
-    anime({
-        targets: '.aboutMeCircle1',
-        duration: 2000,
-        scale: 1,
-        fill: '#FFF',
-        easing: 'easeInOutQuad'
-    });
 
-    anime({
-        targets: '.circleSVG',
-        duration: 2000,
-        fill: '#000000',
-        easing: 'easeInOutQuad'
-    });
 }
 
 class Intro extends Component {
@@ -144,13 +239,13 @@ class Intro extends Component {
                 </div>
 
                 <div id="controlBox">
-                    <div>
-                        <h1 onClick={aboutMe} className="controlBoxText">About Me</h1>
+                    <div className="aboutMeTextDIV">
+                        <h1 onClick={aboutMeTimeline} className="controlBoxText">About Me</h1>
                     </div>
-                    <div>
+                    <div className="projectsTextDIV">
                         <h1 className="controlBoxText">Projects</h1>
                     </div>
-                    <div>
+                    <div className="contactTextDIV">
                         <h1 className="controlBoxText">Contact</h1>
                     </div>
                     <div id="reverseStateButton">
