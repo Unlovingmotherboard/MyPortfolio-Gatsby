@@ -5,10 +5,66 @@ html, body {
 
 #introDiv
 {
-    height: 1000px;
-    background: #000000;
+    height: 1500px;
+    background: rgb(0, 0, 0);
 }
 
+.scene 
+{
+    z-index: 1;
+    position: absolute;
+}
+
+.circleSVG
+{
+    fill: #000000;
+}
+
+/*-----------------About Me Circles-----------------*/
+#aboutMeCircleDiv
+{
+    position: relative;
+}
+
+.innerCircle
+{
+    position: absolute;
+    top: 150px;
+    left: 150px;
+}
+
+.innerCircleSVG
+{
+    fill: #000000
+}
+
+.middleCircle
+{
+    position: absolute;
+    top: 100px;
+    left: 100px;
+}
+
+.middleCircleSVG
+{
+    fill: #000000
+}
+
+.outerCircle
+{
+    position: absolute;
+    top: 50px;
+    left: 50px;
+}
+
+.outerCircleSVG
+{
+    fill: #000000
+}
+
+
+
+/*-----------------CONTROL BOX-----------------*/
 #controlBox
 {
     z-index: 1000;
@@ -23,14 +79,11 @@ html, body {
     color: #FFF;
 }
 
-.scene 
+#reverseStateButton
 {
-    z-index: 1;
-    position: absolute;
+    opacity: 0;
+    display: none;
 }
 
-.circleSVG
-{
-    fill: #000000;
-}
+
 
